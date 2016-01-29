@@ -5,7 +5,15 @@
   <h2>{{tagline}}</h2>
 
   <ul id="messages"></ul>
-  <form action="">
-  <input id="m" autocomplete="off" /><button>Send</button>
+  <form ng-submit="searchText()" name="searchForm">
+    <select ng-model="search.from">
+      <option value="en" required>English</option>
+    </select>
+    <select ng-model="search.to" required>
+      <option value="fr">French</option>
+    </select>
+    <input type="text" name="searchText" id="userName" placeholder="Enter a username" required>
+    <input type="text" name="searchText" id="searchText" placeholder="Enter a searchquery" required>
+    <input type="submit">
   </form>
 </div>
