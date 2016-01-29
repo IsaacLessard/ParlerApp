@@ -1,5 +1,5 @@
 <div ng-controller="ChatController">
-
+  <iframe class= "video" src="https://www.youtube.com/embed/2HQaBWziYvY?autoplay=1" frameborder="0" allowfullscreen></iframe>
   <h3>{{title}}</h3>
 
   <h2>{{tagline}}</h2>
@@ -92,11 +92,12 @@
     <br>
     <input type="submit">
   </form>
-
-  <ul id="messages">
-    <li ng-repeat="message in messages">
-      <h2>{{message.user}}: {{message.text}}</h2>
-    </li>
-  </ul>
+  <div id="messagebox">
+    <ul id="messages">
+      <li ng-repeat="message in messages">
+        <h2>{{message.user}}: {{message.text}}</h2>
+      </li>
+    </ul>
+</div>
 
 </div>

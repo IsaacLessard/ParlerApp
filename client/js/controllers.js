@@ -1,12 +1,10 @@
 app.controller('HomeController', function ($scope) {
-  $scope.title = "Parler - The Translate App"
-  $scope.tagline = "You can type, talk, and tranlate into a language to read or speak. You can also chat and translate."
+  $scope.title = "Hiekka Chat - The Translate App"
 })
 
 var response = "";
 app.controller('SearchController', function ($scope, $http) {
-  $scope.title = "Search";
-  $scope.tagline = "You can type, talk, and tranlate into a language to read or speak. You can also chat and translate."
+  $scope.title = "Searchmode";
   $scope.search = {};
   $scope.searchText = function () {
     var searchText = $('#searchText').val();
@@ -17,8 +15,7 @@ app.controller('SearchController', function ($scope, $http) {
 })
 
 app.controller('ChatController', function ($scope, $http) {
-  $scope.title = "Chat"
-  $scope.tagline = "You can type, talk, and tranlate into a language to read or speak. You can also chat and translate."
+  $scope.title = "Welcome to Hiekka Chat"
   $scope.search = {};
   var socket = io();
   $scope.messages = [];
@@ -38,6 +35,10 @@ app.controller('ChatController', function ($scope, $http) {
 
 })
 
+window.setInterval(function() {
+  var elem = document.getElementById('messagebox');
+  elem.scrollTop = elem.scrollHeight;
+}, 5000);
 
 
 function HeaderController($scope, $location)
