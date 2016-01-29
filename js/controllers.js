@@ -6,6 +6,12 @@ app.controller('HomeController', function ($scope) {
 app.controller('SearchController', function ($scope) {
   $scope.title = "Search"
   $scope.tagline = "You can type, talk, and tranlate into a language to read or speak. You can also chat and translate."
+  $scope.getReq = function ($http) {
+    $http.get(url).then(function (data) {
+      $scope.resText = data;
+      console.log(data)
+    })
+  }
 })
 
 app.controller('ChatController', function ($scope) {
