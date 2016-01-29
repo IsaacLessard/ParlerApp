@@ -3,16 +3,17 @@ app.controller('HomeController', function ($scope) {
   $scope.tagline = "You can type, talk, and tranlate into a language to read or speak. You can also chat and translate."
 })
 
-app.controller('SearchController', function ($scope) {
+app.controller('SearchController', function ($scope, $http) {
   $scope.title = "Search";
   $scope.tagline = "You can type, talk, and tranlate into a language to read or speak. You can also chat and translate."
-  $scope.search = function ($http) {
-    $http.get(url).then(function (data) {
-      var searchQry = $scope.searchText;
-      $scope.resText = data;
-      console.log(data)
-    })
-  }
+  $scope.search = {};
+  $scope.searchText = function () {
+    var searchText = $('#searchText').val();
+    console.log($scope.search)
+    $http.get('http://frengly.com?src='+$scope.search.from+'&dest='+$scope.search.to+'&text=' + searchText + '&email=isaac.c.lessard@gmail.com&password=parlerapp&outformat=json').then(function(data) {
+  console.log(data.data.translation);
+})
+}
 })
 
 app.controller('ChatController', function ($scope) {
