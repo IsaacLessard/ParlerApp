@@ -10,10 +10,8 @@ app.controller('SearchController', function ($scope, $http) {
   $scope.search = {};
   $scope.searchText = function () {
     var searchText = $('#searchText').val();
-    console.log($scope.search)
     $http.get('https://cors-anywhere.herokuapp.com/http://frengly.com?src='+$scope.search.from+'&dest='+$scope.search.to+'&text=' + searchText + '&email=isaac.c.lessard@gmail.com&password=parlerapp&outformat=json').then(function(data) {
     response = data.data.translation;
-  console.log(response);
 })
 }
 })
@@ -22,26 +20,20 @@ app.controller('ChatController', function ($scope, $http) {
   $scope.title = "Chat"
   $scope.tagline = "You can type, talk, and tranlate into a language to read or speak. You can also chat and translate."
   $scope.search = {};
-  $scope.searchText = function () {
-    var searchText = $('#searchText').val();
-    var user = $('#userName').val();
-    console.log($scope.search)
-    $http.get('https://cors-anywhere.herokuapp.com/http://frengly.com?src='+$scope.search.from+'&dest='+$scope.search.to+'&text=' + searchText + '&email=isaac.c.lessard@gmail.com&password=parlerapp&outformat=json').then(function(data) {
-    response = data.data.translation;
-    $('#messages').append($('<li>').text(user + ": " + response));
-  console.log(response);
-})
-}
-  //
-  // // change to ng-click
-  //  $('form').submit(function(){
-  //    socket.emit('chat message', $('#searchText').val());
-  //    $('#m').val('');
-  //    return false;
-  //  });
-  //  // create var for socket
-  //  socket.on('chat message', function(response){
-  //      $('#messages').append($('<li>').text(response));
-  //    });
+  var socket = io();
+  $scope.messages = [];
+  $scope.message = {};
+  $scope.sendMessage = function () {
+    $http.get('https://cors-anywhere.herokuapp.com/http://frengly.com?src='+$scope.search.from+'&dest='+$scope.search.to+'&text=' + $scope.message.text + '&email=isaac.c.lessard@gmail.com&password=parlerapp&outformat=json').then(function(data) {
+      socket.emit('message', {
+        text: data.data.translation,
+        user: $scope.message.username
+      })
+    })
+  }
+  socket.on('message', function(message) {
+    $scope.messages.push(message);
+    $scope.$apply();
+  })
 
 })

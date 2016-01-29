@@ -5,7 +5,7 @@
   <h2>{{tagline}}</h2>
 
   <ul id="messages"></ul>
-  <form ng-submit="searchText()" name="searchForm">
+  <form ng-submit="sendMessage()" name="searchForm">
 
     <select ng-model="search.from" required>
       <option value="ar">Arabic</option>
@@ -83,8 +83,15 @@
       <option value="tr">Turkish</option>
       <option value="vi">Vietnamese</option>
     </select>
-    <input type="text" ng.model="search.query" name="searchText" id="searchText" required>
-    <input type="text" name="searchText" id="searchText" required>
+    <input type="text" ng-model="message.username" name="searchText" id="userName" required>
+    <input type="text" ng-model="message.text" name="searchText" id="searchText" required>
     <input type="submit">
   </form>
+
+  <ul id="messages">
+    <li ng-repeat="message in messages">
+      <h2>{{message.user}}: {{message.text}}</h2>
+    </li>
+  </ul>
+
 </div>
