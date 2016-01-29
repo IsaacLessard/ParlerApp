@@ -3,7 +3,10 @@ body {
   color: white;
   font-family: 'Montserrat', sans-serif;
 }
-
+.sand {
+  width: 100vw;
+  height: 400px;
+}
 h1, h2, h3 {
   letter-spacing: 2px;
   display: flex;
