@@ -11,7 +11,7 @@ app.controller('SearchController', function ($scope, $http) {
   $scope.searchText = function () {
     var searchText = $('#searchText').val();
     $http.get('https://cors-anywhere.herokuapp.com/http://frengly.com?src='+$scope.search.from+'&dest='+$scope.search.to+'&text=' + searchText + '&email=isaac.c.lessard@gmail.com&password=parlerapp&outformat=json').then(function(data) {
-    response = data.data.translation;
+    $scope.translation = data.data.translation;
 })
 }
 })
