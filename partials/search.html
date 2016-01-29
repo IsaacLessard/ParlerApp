@@ -4,4 +4,9 @@
 
   <h2>{{tagline}}</h2>
 
+  <form ng-submit="search()" name="searchForm">
+    <input type="text" ng.model="searchText" name="searchText" type="submit" required>
+    <input type="submit">Search
+  </form>
+
 </div>
