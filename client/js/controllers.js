@@ -37,3 +37,12 @@ app.controller('ChatController', function ($scope, $http) {
   })
 
 })
+
+
+
+function HeaderController($scope, $location)
+{
+    $scope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
+}
