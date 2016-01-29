@@ -10,7 +10,7 @@ app.controller('SearchController', function ($scope, $http) {
   $scope.searchText = function () {
     var searchText = $('#searchText').val();
     console.log($scope.search)
-    $http.get('http://frengly.com?src='+$scope.search.from+'&dest='+$scope.search.to+'&text=' + searchText + '&email=isaac.c.lessard@gmail.com&password=parlerapp&outformat=json').then(function(data) {
+    $http.get('http://cors-anywhere.herokuapp.com/http://frengly.com?src='+$scope.search.from+'&dest='+$scope.search.to+'&text=' + searchText + '&email=isaac.c.lessard@gmail.com&password=parlerapp&outformat=json').then(function(data) {
   console.log(data.data.translation);
 })
 }
